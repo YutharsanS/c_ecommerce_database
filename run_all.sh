@@ -1,11 +1,40 @@
-#vairables
-export MYSQL_USER="yutharsan"         # Replace with your MySQL username
-export MYSQL_PASS="0585"              # Replace with your MySQL password
-export DATABASE="test_script"
+#!/bin/bash
 
-# Drop the database if it exists, then recreate it
+# Variables
+MYSQL_USER="yutharsan"
+MYSQL_PASS="0585"
+DATABASE="c_ecommerce"
+DIRECTORIES=("schema" "data" "functions" "indexes" "procedures" "queries" "views")
+
+# Export variables for use in execute_sql_dir.sh
+export MYSQL_USER
+export MYSQL_PASS
+export DATABASE
+
+# Create a temporary MySQL option file
+MYSQL_OPTS=$(mktemp)
+cat << EOF > "$MYSQL_OPTS"
+[client]
+user=$MYSQL_USER
+password=$MYSQL_PASS
+EOF
+
+# Drop and recreate the database
 echo "Dropping and recreating the database: $DATABASE"
-sudo mysql -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "DROP DATABASE IF EXISTS $DATABASE; CREATE DATABASE $DATABASE; USE $DATABASE;"
+sudo mysql --defaults-file="$MYSQL_OPTS" <<EOF
+DROP DATABASE IF EXISTS $DATABASE;
+CREATE DATABASE $DATABASE;
+USE $DATABASE;
+EOF
 
-./run_schema.sh
-./run_data.sh
+# Remove the temporary MySQL option file
+rm "$MYSQL_OPTS"
+
+# Execute SQL files in each directory
+for dir in "${DIRECTORIES[@]}"; do
+    ./run.sh "$dir"
+done
+
+rm master_*
+
+echo "Execution of all SQL files in all directories complete."
