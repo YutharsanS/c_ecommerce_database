@@ -19,5 +19,5 @@ If you are using linux, use this to run all files inside a particular directory
 ```
 else use below to run all the sql files in the repo.
 ```
-`./run_all`
+./run_all
 ```
