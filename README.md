@@ -4,8 +4,8 @@ The development directory for the mysql database for c_eccomerce project under m
 When working, keep a folder structure like this, because automated scripts depends on the folder structure
 ```
 /root
-├── schema
 ├── data
+├── schema
 ├── functions
 ├── procedures
 ├── views
