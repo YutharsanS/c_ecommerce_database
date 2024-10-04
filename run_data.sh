@@ -1,12 +1,9 @@
 #!/bin/bash
 
 # Variables
-SQL_DIR="~/Project/HeadFirst"  # Directory where all your .sql files are stored
+SQL_DIR="./data/data"  # Directory where all your .sql files are stored
 MASTER_SQL="master.sql"        # Name of the master file to be created
-SCRIPT_NAME="run_all_sql.sh"   # The name of this script
-MYSQL_USER="yutharsan"         # Replace with your MySQL username
-MYSQL_PASS="0585"              # Replace with your MySQL password
-DATABASE="headfirst"           # Replace with your database name
+SCRIPT_NAME="run_data.sh"   # The name of this script
 
 # Expand the tilde (~) to the full home directory path
 SQL_DIR=$(eval echo $SQL_DIR)
@@ -30,6 +27,6 @@ for sql_file in "$SQL_DIR"/*.sql; do
 done
 
 # Execute the master.sql file using MySQL
-sudo mysql -u "$MYSQL_USER" -p"$MYSQL_PASS" "$DATABASE" < "$SQL_DIR/$MASTER_SQL"
+sudo mysql -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "USE $DATABASE; source $SQL_DIR/$MASTER_SQL;"
 
 echo "Execution of all SQL files complete."

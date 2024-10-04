@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # Variables
-SQL_DIR="./tables"  # Directory where all your .sql files are stored
+SQL_DIR="./schema/tables"  # Directory where all your .sql files are stored
 MASTER_SQL="master.sql"        # Name of the master file to be created
-SCRIPT_NAME="run_all_sql.sh"   # The name of this script
+SCRIPT_NAME="run_schema.sh"   # The name of this script
 MYSQL_USER="yutharsan"         # Replace with your MySQL username
 MYSQL_PASS="0585"              # Replace with your MySQL password
-DATABASE="test_script"         # Replace with your database name
 
 # Expand the tilde (~) to the full home directory path
 SQL_DIR=$(eval echo $SQL_DIR)
@@ -20,9 +19,6 @@ fi
 # Create/empty the master.sql file in the directory
 > "$SQL_DIR/$MASTER_SQL"
 
-# Drop the database if it exists, then recreate it
-echo "Dropping and recreating the database: $DATABASE"
-sudo mysql -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "DROP DATABASE IF EXISTS $DATABASE; CREATE DATABASE $DATABASE;"
 
 # Check if there are any .sql files to process
 shopt -s nullglob
@@ -42,7 +38,7 @@ for sql_file in "${sql_files[@]}"; do
 done
 
 # Execute the master.sql file using MySQL
-sudo mysql -u "$MYSQL_USER" -p"$MYSQL_PASS" "$DATABASE" < "$SQL_DIR/$MASTER_SQL"
+sudo mysql -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "USE $DATABASE; source $SQL_DIR/$MASTER_SQL;"
 
 # Remove the master.sql file
 rm "$SQL_DIR/$MASTER_SQL"
