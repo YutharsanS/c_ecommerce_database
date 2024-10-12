@@ -31,21 +31,18 @@ BEGIN
             SET v_cart_id = LAST_INSERT_ID();
         END IF;
 
-        /* Finding right warehouse -- could be changed later */
-        SELECT warehouse_id INTO v_warehouse_id
-        FROM Variant_Warehouse
-        WHERE variant_id = p_variant_id
-        ORDER BY stock_count DESC
-        LIMIT 1;
+        /* Getting warehouse id */
+        SET v_warehouse_id = GET_Warehouse_Id(p_variant_id);
 
         IF v_warehouse_id IS NULL THEN
             ROLLBACK;
-            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Transaction stopped - Warehouse not found';
+            SIGNAL SQLSTATE '45001' SET MESSAGE_TEXT = 'INV - Warehouse not found';
         END IF;
 
         SET v_available_quantity = Check_Variant_Availability(p_variant_id, v_warehouse_id);
 
         /* Update the quantity */
+
         CALL Update_Variant_Stock(p_variant_id, v_warehouse_id, p_quantity);
 
         IF v_available_quantity >= p_quantity THEN

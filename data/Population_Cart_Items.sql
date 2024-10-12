@@ -6,10 +6,6 @@ INSERT INTO Cart_Items (cart_id, variant_id, quantity) VALUES
 (1, 1, 1),
 (1, 5, 2);
 
--- Jane Smith's Cart
-INSERT INTO Cart_Items (cart_id, variant_id, quantity) VALUES
-(2, 3, 1);
-
 -- Guest User's Cart
 INSERT INTO Cart_Items (cart_id, variant_id, quantity) VALUES
 (3, 6, 1);

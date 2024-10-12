@@ -24,8 +24,8 @@ BEGIN
             SET stock_count = stock_count - p_quantity
             WHERE variant_id = p_variant_id AND warehouse_id = p_warehouse_id;
         ELSE
-            SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Insufficient Stock';
+            SIGNAL SQLSTATE '45002'
+            SET MESSAGE_TEXT = 'INV - Insufficient Stock';
         END IF;
     COMMIT;
 END$$
