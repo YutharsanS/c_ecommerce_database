@@ -2,7 +2,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Populate Variant_Attribute table
-INSERT INTO Variant_Attribute (variant_id, attribute_id, attribute_value) VALUES
+INSERT INTO variant_attribute (variant_id, attribute_id, attribute_value) VALUES
 (1, 1, 'Black'),   -- Color
 (1, 2, '16GB'),    -- Storage Capacity
 (2, 1, 'Red'),
@@ -13,7 +13,7 @@ INSERT INTO Variant_Attribute (variant_id, attribute_id, attribute_value) VALUES
 (4, 2, '32GB');
 
 -- Bose Speaker Variant
-INSERT INTO Variant_Attribute (variant_id, attribute_id, attribute_value) VALUES
+INSERT INTO variant_attribute (variant_id, attribute_id, attribute_value) VALUES
 (5, 1, 'Black');
 
 

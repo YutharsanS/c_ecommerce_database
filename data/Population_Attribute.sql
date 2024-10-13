@@ -2,7 +2,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Populate Attribute table
-INSERT INTO Attribute (attribute_id, attribute_name) VALUES
+INSERT INTO attribute (attribute_id, attribute_name) VALUES
 (1, 'Color'),
 (2, 'Storage Capacity'),
 (3, 'Brand'),

@@ -2,7 +2,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Populate Variant_Warehouse table
-INSERT INTO Variant_Warehouse (variant_id, warehouse_id, stock_count) VALUES
+INSERT INTO variant_warehouse (variant_id, warehouse_id, stock_count) VALUES
 (1, 1, 50),
 (2, 1, 30),
 (3, 1, 20),

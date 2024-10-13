@@ -15,6 +15,11 @@ BEGIN
     WHERE warehouse_id = f_warehouse_id AND variant_id = f_variant_id
     LIMIT 1;
 
+    IF available_quantity IS NULL THEN
+        SIGNAL SQLSTATE '45003' SET MESSAGE_TEXT 'INV - Variant entry not found';
+    END IF;
+
     RETURN available_quantity;
-END$$
+END
+$$
 DELIMITER ;

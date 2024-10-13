@@ -16,6 +16,7 @@ BEGIN
     LIMIT 1;
 
     RETURN v_warehouse_id;
-END$$
+END
+$$
 
 DELIMITER ;

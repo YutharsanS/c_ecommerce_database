@@ -2,7 +2,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Populate Discounts table
-INSERT INTO Discounts (discount_id, discount) VALUES
+INSERT INTO discounts (discount_id, discount) VALUES
 (1, 10.00),  -- 10% discount
 (2, 5.00);   -- 5% discount
 

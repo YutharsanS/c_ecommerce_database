@@ -2,7 +2,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Populate Variant table
-INSERT INTO Variant (variant_id, product_id, sku, price, weight, discount_id) VALUES
+INSERT INTO variant (variant_id, product_id, sku, price, weight, discount_id) VALUES
 (1, 1, 'IPX-16GB-BLK', 999.99, 0.174, 1),    -- iPhone X 16GB Black
 (2, 1, 'IPX-16GB-RED', 999.99, 0.174, NULL), -- iPhone X 16GB Red
 (3, 1, 'IPX-32GB-BLK', 1099.99, 0.174, 2),   -- iPhone X 32GB Black

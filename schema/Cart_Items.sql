@@ -8,8 +8,8 @@ CREATE TABLE cart_items (
     variant_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (cart_id, variant_id),
-    FOREIGN KEY (cart_id) REFERENCES Cart(cart_id),
-    FOREIGN KEY (variant_id) REFERENCES Variant(variant_id)
+    FOREIGN KEY (cart_id) REFERENCES cart(cart_id),
+    FOREIGN KEY (variant_id) REFERENCES variant(variant_id)
 );
 
 
