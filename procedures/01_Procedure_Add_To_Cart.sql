@@ -32,7 +32,7 @@ BEGIN
         END IF;
 
         /* Getting warehouse id */
-        SET v_warehouse_id = GET_Warehouse_Id(p_variant_id);
+        SET v_warehouse_id = 1;
 
         IF v_warehouse_id IS NULL THEN
             ROLLBACK;

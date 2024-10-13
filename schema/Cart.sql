@@ -7,7 +7,7 @@ CREATE TABLE cart (
   cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   customer_id INT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+  FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
 );
 
 
