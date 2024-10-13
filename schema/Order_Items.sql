@@ -1,9 +1,9 @@
 -- Disable foreign key checks
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS Order_Items;
+DROP TABLE IF EXISTS order_items;
 
-CREATE TABLE Order_Items (
+CREATE TABLE order_items (
   order_id INT NOT NULL,
   variant_id INT NOT NULL,
   quantity INT NOT NULL,

@@ -1,9 +1,9 @@
 -- Disable foreign key checks
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS Cart;
+DROP TABLE IF EXISTS cart;
 
-CREATE TABLE Cart (
+CREATE TABLE cart (
   cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   customer_id INT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,

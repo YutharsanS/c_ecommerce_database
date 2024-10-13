@@ -1,12 +1,12 @@
 -- Disable foreign key checks
 SET FOREIGN_KEY_CHECKS = 0;
 
-DROP TABLE IF EXISTS Warehouse;
+DROP TABLE IF EXISTS warehouse;
 
-CREATE TABLE Warehouse (
+CREATE TABLE warehouse (
   warehouse_id INT AUTO_INCREMENT PRIMARY KEY,
   warehouse_name VARCHAR(100) NOT NULL,
-  location VARCHAR(255)
+  warehouse_location VARCHAR(255)
 );
 
 
