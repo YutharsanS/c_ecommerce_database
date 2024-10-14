@@ -20,7 +20,7 @@ BEGIN
 
         IF v_available_quantity >= p_quantity THEN
             /* Deducting from the warehouse */
-            UPDATE Variant_Warehouse
+            UPDATE variant_warehouse
             SET stock_count = stock_count - p_quantity
             WHERE variant_id = p_variant_id AND warehouse_id = p_warehouse_id;
         ELSE
