@@ -4,7 +4,7 @@
 MYSQL_USER="yutharsan"
 MYSQL_PASS="0585"
 DATABASE="c_ecommerce"
-DIRECTORIES=("schema" "dev" "data" "functions" "indexes" "procedures" "queries" "views")
+DIRECTORIES=("schema" "dev" "data" "functions" "indexes" "procedures" "triggers" "views")
 
 # Export variables for use in execute_sql_dir.sh
 export MYSQL_USER

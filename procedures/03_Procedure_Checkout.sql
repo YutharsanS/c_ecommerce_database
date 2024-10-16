@@ -5,7 +5,7 @@ CREATE PROCEDURE Procedure_Checkout (
     IN p_customer_id INT,
     IN p_payment_method VARCHAR(20),
     IN p_delivery_method VARCHAR(20),
-    IN p_address_id INT,
+    -- IN p_address_id INT,
     IN p_contact_email VARCHAR(100),
     IN p_contact_phone VARCHAR(20)
 )
@@ -17,6 +17,7 @@ BEGIN
     DECLARE v_quantity INT;
     DECLARE v_warehouse_id INT;
     DECLARE v_available_quantity INT;
+    DECLARE v_address_id INT;
 
     DECLARE done INT DEFAULT FALSE;
     DECLARE cart_cursor CURSOR FOR
@@ -29,6 +30,11 @@ BEGIN
     END;
 
     START TRANSACTION;
+        /* Get the address id of the customer */
+        SELECT address_id INTO v_address_id
+        FROM customer
+        WHERE customer_id = p_customer_id;
+
         /* Get the customer's cart */
         SELECT cart_id INTO v_cart_id
         FROM cart
@@ -46,7 +52,7 @@ BEGIN
 
         /* Create order */
         INSERT INTO orders(customer_id, address_id, payment_id, delivery_method, contact_email, contact_phone)
-        VALUES (p_customer_id, p_address_id, v_payment_id, p_delivery_method, p_contact_email, p_contact_phone);
+        VALUES (p_customer_id, v_address_id, v_payment_id, p_delivery_method, p_contact_email, p_contact_phone);
         SET v_order_id = LAST_INSERT_ID();
 
         /* Process each item in the cart */
@@ -105,4 +111,4 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL Procedure_Checkout(1, 'Cash On Delivery', 'Delivery', 1, 'test@email.com', '0777777777');
+-- CALL Procedure_Checkout(1, 'Cash On Delivery', 'Delivery', 1, 'test@email.com', '0777777777');

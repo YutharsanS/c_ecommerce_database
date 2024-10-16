@@ -1,6 +1,6 @@
-DROP PROCEDURE IF EXISTS Customer_Login;
+DROP PROCEDURE IF EXISTS customer_login;
 DELIMITER $$
-CREATE PROCEDURE Customer_Login(
+CREATE PROCEDURE customer_login(
     IN p_email VARCHAR(100),
     IN p_password_hash VARCHAR(255)
 )
@@ -10,15 +10,15 @@ BEGIN
     DECLARE v_is_guest BOOLEAN;
 
     -- Check if a customer exists with the given email and password hash
-    SELECT customer_id, name, is_guest 
+    SELECT customer_id, customer_name, is_guest
     INTO v_customer_id, v_customer_name, v_is_guest
-    FROM Customer
+    FROM customer
     WHERE email = p_email AND password_hash = p_password_hash
     LIMIT 1;
 
     -- If a customer is found, return the customer information
     IF v_customer_id IS NOT NULL THEN
-        SELECT 
+        SELECT
             v_customer_id AS customer_id,
             v_customer_name AS customer_name,
             v_is_guest AS is_guest,
@@ -31,9 +31,9 @@ BEGIN
 END$$
 DELIMITER ;
 
-INSERT INTO Customer (password_hash, name, email, phone_number, is_guest)
-VALUES ('hashed_password123', 'John Doe', 'joh@example.com', '1234567890', FALSE);
+-- INSERT INTO customer (password_hash, name, email, phone_number, is_guest)
+-- VALUES ('hashed_password123', 'John Doe', 'joh@example.com', '1234567890', FALSE);
 
-CALL Customer_Login('joh@example.com', 'hashed_password123');
+-- CALL customer_login('joh@example.com', 'hashed_password123');
 
-CALL Customer_Login('joh@example.com', 'wrong_password');
+-- CALL customer_login('joh@example.com', 'wrong_password');

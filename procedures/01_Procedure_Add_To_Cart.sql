@@ -41,7 +41,6 @@ BEGIN
         VALUES (v_cart_id, p_variant_id, p_quantity)
         ON DUPLICATE KEY UPDATE
             quantity = quantity + p_quantity;
-
     COMMIT;
 END$$
 DELIMITER ;

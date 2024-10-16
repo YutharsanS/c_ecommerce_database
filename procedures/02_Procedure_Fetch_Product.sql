@@ -21,13 +21,11 @@ BEGIN
         v.sku,
         v.price,
         v.weight,
-        d.discount,
         GROUP_CONCAT(CONCAT(a.attribute_name, ': ', va.attribute_value) SEPARATOR ', ') AS variant_attributes
     FROM
         variant v
         LEFT JOIN variant_attribute va ON v.variant_id = va.variant_id
         LEFT JOIN attribute a ON va.attribute_id = a.attribute_id
-        LEFT JOIN discounts d ON d.discount_id = v.discount_id
     WHERE
         v.product_id = p_product_id
     GROUP BY
