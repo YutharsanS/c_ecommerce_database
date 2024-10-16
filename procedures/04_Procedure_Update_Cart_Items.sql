@@ -61,4 +61,4 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL Procedure_Update_Cart_Item_Quantity(1, 1, -1);
+-- CALL Procedure_Update_Cart_Item_Quantity(1, 1, -1);
