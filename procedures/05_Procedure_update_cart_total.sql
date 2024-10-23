@@ -1,3 +1,4 @@
+DROP PROCEDURE IF EXISTS update_cart_total_price;
 DELIMITER $$
 
 CREATE PROCEDURE update_cart_total_price(p_cart_id INT)
