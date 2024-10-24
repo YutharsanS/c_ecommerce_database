@@ -90,44 +90,47 @@ BEGIN
 END$$
 DELIMITER ;
 
--- Insert test data
-INSERT INTO Category (category_name) VALUES ('Test Category');
-INSERT INTO Product (product_name, category_id, description) VALUES ('Test Product', 1, 'A test product');
-INSERT INTO Variant (product_id, sku, price, weight) VALUES (1, 'TEST-SKU', 100.00, 1.5);
-INSERT INTO Warehouse (warehouse_name, location) VALUES ('Test Warehouse', 'Test Location');
-INSERT INTO Variant_Warehouse (variant_id, warehouse_id, stock_count) VALUES (1, 2, 10);
-INSERT INTO City (city_name, is_main_city) VALUES ('Test City', TRUE);
-INSERT INTO Address (line_1, city, zip_code) VALUES ('123 Test St', 'Test City', '12345');
-INSERT INTO Customer (password_hash, name, email, phone_number, address_id, is_guest) 
-VALUES ('testhash', 'Test Customer', 'test@example.com', '1234567890', 1, FALSE);
 
--- Check initial data
-SELECT * FROM Variant_Warehouse WHERE variant_id = 1;
-SELECT * FROM Customer WHERE customer_id = 1;
+-- checking
 
-CALL Buy_Now(1, 1, 2, 1, 'Card', 'Delivery');
+-- -- Insert test data
+-- INSERT INTO Category (category_name) VALUES ('Test Category');
+-- INSERT INTO Product (product_name, category_id, description) VALUES ('Test Product', 1, 'A test product');
+-- INSERT INTO Variant (product_id, sku, price, weight) VALUES (1, 'TEST-SKU', 100.00, 1.5);
+-- INSERT INTO Warehouse (warehouse_name, location) VALUES ('Test Warehouse', 'Test Location');
+-- INSERT INTO Variant_Warehouse (variant_id, warehouse_id, stock_count) VALUES (1, 2, 10);
+-- INSERT INTO City (city_name, is_main_city) VALUES ('Test City', TRUE);
+-- INSERT INTO Address (line_1, city, zip_code) VALUES ('123 Test St', 'Test City', '12345');
+-- INSERT INTO Customer (password_hash, name, email, phone_number, address_id, is_guest) 
+-- VALUES ('testhash', 'Test Customer', 'test@example.com', '1234567890', 1, FALSE);
 
--- Check results
-SELECT * FROM Orders ORDER BY order_id DESC LIMIT 1;
-SELECT * FROM Order_Items WHERE order_id = (SELECT MAX(order_id) FROM Orders);
-SELECT * FROM Payment ORDER BY payment_id DESC LIMIT 1;
-SELECT * FROM Variant_Warehouse WHERE variant_id = 1;
+-- -- Check initial data
+-- SELECT * FROM Variant_Warehouse WHERE variant_id = 1;
+-- SELECT * FROM Customer WHERE customer_id = 1;
 
-CALL Buy_Now(1, 1, 40, 1, 'Card', 'Delivery');
+-- CALL Buy_Now(1, 1, 2, 1, 'Card', 'Delivery');
+
+-- -- Check results
+-- SELECT * FROM Orders ORDER BY order_id DESC LIMIT 1;
+-- SELECT * FROM Order_Items WHERE order_id = (SELECT MAX(order_id) FROM Orders);
+-- SELECT * FROM Payment ORDER BY payment_id DESC LIMIT 1;
+-- SELECT * FROM Variant_Warehouse WHERE variant_id = 1;
+
+-- CALL Buy_Now(1, 1, 40, 1, 'Card', 'Delivery');
 
 
--- This should raise an error
+-- -- This should raise an error
 
-START TRANSACTION;
-CALL Buy_Now(1, 1, 3, 1, 'Card', 'Delivery');
--- Don't commit yet
-START TRANSACTION;
-CALL Buy_Now(1, 1, 4, 1, 'Cash on Delivery', 'Store Pickup');
--- Don't commit yet
+-- START TRANSACTION;
+-- CALL Buy_Now(1, 1, 3, 1, 'Card', 'Delivery');
+-- -- Don't commit yet
+-- START TRANSACTION;
+-- CALL Buy_Now(1, 1, 4, 1, 'Cash on Delivery', 'Store Pickup');
+-- -- Don't commit yet
 
-commit;
+-- commit;
 
-SELECT * FROM Orders ORDER BY order_id DESC LIMIT 2;
-SELECT * FROM Order_Items WHERE order_id IN (SELECT order_id FROM Orders ORDER BY order_id DESC LIMIT 2);
-SELECT * FROM Payment ORDER BY payment_id DESC LIMIT 2;
-SELECT * FROM Variant_Warehouse WHERE variant_id = 1;
+-- SELECT * FROM Orders ORDER BY order_id DESC LIMIT 2;
+-- SELECT * FROM Order_Items WHERE order_id IN (SELECT order_id FROM Orders ORDER BY order_id DESC LIMIT 2);
+-- SELECT * FROM Payment ORDER BY payment_id DESC LIMIT 2;
+-- SELECT * FROM Variant_Warehouse WHERE variant_id = 1;
