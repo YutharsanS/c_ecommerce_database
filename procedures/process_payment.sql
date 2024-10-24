@@ -1,6 +1,6 @@
 -- Stored Procedure for Payment Processing
 DELIMITER //
-CREATE PROCEDURE sp_process_payment(
+CREATE PROCEDURE process_payment(
     IN p_order_id INT,
     IN p_payment_method VARCHAR(50),
     IN p_amount DECIMAL(10,2)
