@@ -17,5 +17,3 @@ BEGIN
 END$$
 
 DELIMITER ;
-
-CALL search('i', 10, 0);

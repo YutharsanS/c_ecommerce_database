@@ -26,9 +26,3 @@ END $$
 DELIMITER ;
 
 SET FOREIGN_KEY_CHECKS = 1;
-
--- INSERT INTO cart_items (cart_id, variant_id, quantity) VALUES
--- (1, 4, 1),
--- (1, 3, 2);
-
--- SHOW TRIGGERS WHERE `Table` = 'cart_items';

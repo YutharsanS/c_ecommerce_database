@@ -31,9 +31,11 @@ BEGIN
 END$$
 DELIMITER ;
 
--- INSERT INTO customer (password_hash, name, email, phone_number, is_guest)
+
+-- checking works
+-- INSERT INTO Customer (password_hash, name, email, phone_number, is_guest)
 -- VALUES ('hashed_password123', 'John Doe', 'joh@example.com', '1234567890', FALSE);
 
--- CALL customer_login('joh@example.com', 'hashed_password123');
+-- CALL Customer_Login('joh@example.com', 'hashed_password123');
 
--- CALL customer_login('joh@example.com', 'wrong_password');
+-- CALL Customer_Login('joh@example.com', 'wrong_password');
