@@ -12,7 +12,7 @@ SQL_DIR="$(pwd)/$DIR_NAME"
 MASTER_SQL="$(pwd)/master_${DIR_NAME}.sql"
 MYSQL_USER="${MYSQL_USER:-yutharsan}"
 MYSQL_PASS="${MYSQL_PASS:-0585}"
-DATABASE="${DATABASE:- c_ecommerce}"
+DATABASE="${DATABASE:-c_ecommerce}"
 
 # Create a temporary MySQL option file
 MYSQL_OPTS=$(mktemp)
