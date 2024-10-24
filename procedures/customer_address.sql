@@ -63,44 +63,48 @@ BEGIN
 END$$
 DELIMITER ;
 
-INSERT INTO City (city_name, is_main_city) VALUES ('New York', TRUE);
 
-INSERT INTO Customer (password_hash, name, email, phone_number, is_guest)
-VALUES ('hashed_password', 'John Doe', 'john@example.com', '1234567890', FALSE);
+-- checking works
 
-CALL Update_Customer_Address(
-    1,  -- customer_id (adjust this to match your inserted customer's ID)
-    '123 Main St',  -- line_1
-    'Apt 4B',  -- line_2
-    'New York',  -- city
-    'Manhattan',  -- district
-    '10001'  -- zip_code
-);
 
-SELECT c.customer_id, c.name, a.*
-FROM Customer c
-JOIN Address a ON c.address_id = a.address_id
-WHERE c.customer_id = 1;  -- adjust this to match your customer's ID
+-- INSERT INTO City (city_name, is_main_city) VALUES ('New York', TRUE);
 
-CALL Update_Customer_Address(
-    1,  -- customer_id (same as before)
-    '456 Elm St',  -- new line_1
-    'Suite 7C',  -- new line_2
-    'New York',  -- city (same as before)
-    'Brooklyn',  -- new district
-    '11201'  -- new zip_code
-);
+-- INSERT INTO Customer (password_hash, name, email, phone_number, is_guest)
+-- VALUES ('hashed_password', 'John Doe', 'john@example.com', '1234567890', FALSE);
 
-SELECT c.customer_id, c.name, a.*
-FROM Customer c
-JOIN Address a ON c.address_id = a.address_id
-WHERE c.customer_id = 1;  -- adjust this to match your customer's ID
+-- CALL Update_Customer_Address(
+--     1,  -- customer_id (adjust this to match your inserted customer's ID)
+--     '123 Main St',  -- line_1
+--     'Apt 4B',  -- line_2
+--     'New York',  -- city
+--     'Manhattan',  -- district
+--     '10001'  -- zip_code
+-- );
 
-CALL Update_Customer_Address(
-    1,  -- customer_id
-    '789 Oak St',  -- line_1
-    NULL,  -- line_2
-    'NonexistentCity',  -- city (this should cause an error)
-    'SomeDistrict',  -- district
-    '12345'  -- zip_code
-);
+-- SELECT c.customer_id, c.name, a.*
+-- FROM Customer c
+-- JOIN Address a ON c.address_id = a.address_id
+-- WHERE c.customer_id = 1;  -- adjust this to match your customer's ID
+
+-- CALL Update_Customer_Address(
+--     1,  -- customer_id (same as before)
+--     '456 Elm St',  -- new line_1
+--     'Suite 7C',  -- new line_2
+--     'New York',  -- city (same as before)
+--     'Brooklyn',  -- new district
+--     '11201'  -- new zip_code
+-- );
+
+-- SELECT c.customer_id, c.name, a.*
+-- FROM Customer c
+-- JOIN Address a ON c.address_id = a.address_id
+-- WHERE c.customer_id = 1;  -- adjust this to match your customer's ID
+
+-- CALL Update_Customer_Address(
+--     1,  -- customer_id
+--     '789 Oak St',  -- line_1
+--     NULL,  -- line_2
+--     'NonexistentCity',  -- city (this should cause an error)
+--     'SomeDistrict',  -- district
+--     '12345'  -- zip_code
+-- );
