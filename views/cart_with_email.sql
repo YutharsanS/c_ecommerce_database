@@ -1,4 +1,5 @@
+DROP VIEW IF EXISTS cart_with_email;
+
 CREATE VIEW cart_with_email AS
-SELECT C.*,CU.email FROM cart C 
-join customer CU on C.customer_id=CU.customer_id 
-WHERE CU.email = ?
+SELECT C.*,CU.customer_email FROM cart C
+JOIN customer CU on C.customer_id=CU.customer_id;

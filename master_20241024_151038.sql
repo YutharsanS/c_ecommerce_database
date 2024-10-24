@@ -1,4 +1,4 @@
--- Master SQL file generated on Thu Oct 24 09:29:43 AM +0530 2024
+-- Master SQL file generated on Thu Oct 24 03:10:38 PM +0530 2024
 DROP DATABASE IF EXISTS c_ecommerce;
 CREATE DATABASE c_ecommerce;
 USE c_ecommerce;
@@ -823,7 +823,6 @@ END$$
 
 DELIMITER ;
 
-CALL search('i', 10, 0);
 
 -- File: procedures/customer_address.sql
 DROP PROCEDURE IF EXISTS Update_customer_address;
@@ -892,6 +891,51 @@ END$$
 DELIMITER ;
 
 
+-- checking works
+
+
+-- INSERT INTO City (city_name, is_main_city) VALUES ('New York', TRUE);
+
+-- INSERT INTO Customer (password_hash, name, email, phone_number, is_guest)
+-- VALUES ('hashed_password', 'John Doe', 'john@example.com', '1234567890', FALSE);
+
+-- CALL Update_Customer_Address(
+--     1,  -- customer_id (adjust this to match your inserted customer's ID)
+--     '123 Main St',  -- line_1
+--     'Apt 4B',  -- line_2
+--     'New York',  -- city
+--     'Manhattan',  -- district
+--     '10001'  -- zip_code
+-- );
+
+-- SELECT c.customer_id, c.name, a.*
+-- FROM Customer c
+-- JOIN Address a ON c.address_id = a.address_id
+-- WHERE c.customer_id = 1;  -- adjust this to match your customer's ID
+
+-- CALL Update_Customer_Address(
+--     1,  -- customer_id (same as before)
+--     '456 Elm St',  -- new line_1
+--     'Suite 7C',  -- new line_2
+--     'New York',  -- city (same as before)
+--     'Brooklyn',  -- new district
+--     '11201'  -- new zip_code
+-- );
+
+-- SELECT c.customer_id, c.name, a.*
+-- FROM Customer c
+-- JOIN Address a ON c.address_id = a.address_id
+-- WHERE c.customer_id = 1;  -- adjust this to match your customer's ID
+
+-- CALL Update_Customer_Address(
+--     1,  -- customer_id
+--     '789 Oak St',  -- line_1
+--     NULL,  -- line_2
+--     'NonexistentCity',  -- city (this should cause an error)
+--     'SomeDistrict',  -- district
+--     '12345'  -- zip_code
+-- );
+
 -- File: procedures/Get_Users_By_Email.sql
 DROP PROCEDURE IF EXISTS get_user_by_email;
 DELIMITER $$
@@ -946,12 +990,125 @@ BEGIN
 END$$
 DELIMITER ;
 
--- INSERT INTO customer (password_hash, name, email, phone_number, is_guest)
+
+-- checking works
+-- INSERT INTO Customer (password_hash, name, email, phone_number, is_guest)
 -- VALUES ('hashed_password123', 'John Doe', 'joh@example.com', '1234567890', FALSE);
 
--- CALL customer_login('joh@example.com', 'hashed_password123');
+-- CALL Customer_Login('joh@example.com', 'hashed_password123');
 
--- CALL customer_login('joh@example.com', 'wrong_password');
+-- CALL Customer_Login('joh@example.com', 'wrong_password');
+
+-- File: procedures/product_by_id.sql
+DROP PROCEDURE IF EXISTS product_by_id;
+DELIMITER //
+CREATE PROCEDURE product_by_id(IN p_product_id INT)
+BEGIN
+    SELECT *
+    FROM product
+    WHERE product_id = p_product_id;
+END //
+
+DELIMITER ;
+
+
+-- File: procedures/sp_get_product_by_id.sql
+-- Stored procedure for getting product details by ID
+DELIMITER //
+CREATE PROCEDURE sp_get_product_by_id(
+    IN p_product_id INT
+)
+BEGIN
+    -- Get main product info
+    SELECT 
+        p.*,
+        c.category_name,
+        GROUP_CONCAT(DISTINCT pc.category_id) as additional_categories
+    FROM Product p
+    LEFT JOIN Category c ON p.category_id = c.category_id
+    LEFT JOIN Product_Category pc ON p.product_id = pc.product_id
+    WHERE p.product_id = p_product_id
+    GROUP BY p.product_id;
+    
+    -- Get product attributes
+    SELECT 
+        a.attribute_name,
+        pa.attribute_value
+    FROM Product_Attribute pa
+    JOIN Attribute a ON pa.attribute_id = a.attribute_id
+    WHERE pa.product_id = p_product_id;
+    
+    -- Get variants with their attributes and stock
+    SELECT 
+        v.variant_id,
+        v.sku,
+        v.price,
+        v.weight,
+        d.discount,
+        GROUP_CONCAT(
+            CONCAT(a.attribute_name, ': ', va.attribute_value)
+            SEPARATOR '; '
+        ) as variant_attributes,
+        SUM(vw.stock_count) as total_stock
+    FROM Variant v
+    LEFT JOIN Discounts d ON v.discount_id = d.discount_id
+    LEFT JOIN Variant_Attribute va ON v.variant_id = va.variant_id
+    LEFT JOIN Attribute a ON va.attribute_id = a.attribute_id
+    LEFT JOIN Variant_Warehouse vw ON v.variant_id = vw.variant_id
+    WHERE v.product_id = p_product_id
+    GROUP BY v.variant_id;
+END //
+DELIMITER ;
+
+
+-- File: procedures/sp_get_products.sql
+-- Stored procedure for paginated product listing
+DELIMITER //
+CREATE PROCEDURE sp_get_products(
+    IN p_limit INT,
+    IN p_offset INT,
+    OUT p_total INT
+)
+BEGIN
+    -- Get total count
+    SELECT COUNT(*) INTO p_total FROM vw_product_details;
+    
+    -- Get paginated results
+    SELECT * FROM vw_product_details
+    LIMIT p_limit OFFSET p_offset;
+END //
+DELIMITER ;
+
+-- File: procedures/sp_process_payment.sql
+-- Stored Procedure for Payment Processing
+DELIMITER //
+CREATE PROCEDURE sp_process_payment(
+    IN p_order_id INT,
+    IN p_payment_method VARCHAR(50),
+    IN p_amount DECIMAL(10,2)
+)
+BEGIN
+    DECLARE v_payment_id INT;
+    
+    START TRANSACTION;
+    
+    -- Create payment record
+    INSERT INTO Payment (payment_method, amount)
+    VALUES (p_payment_method, p_amount);
+    
+    SET v_payment_id = LAST_INSERT_ID();
+    
+    -- Update order with payment ID
+    UPDATE Orders 
+    SET payment_id = v_payment_id
+    WHERE order_id = p_order_id;
+    
+    COMMIT;
+    
+    SELECT v_payment_id AS payment_id;
+END //
+DELIMITER ;
+
 
 
 -- ============================================
@@ -976,59 +1133,49 @@ END;
 DELIMITER ;
 
 
--- File: triggers/Trigger_Delete_Cart_Item.sql
-DROP TRIGGER IF EXISTS delete_cart_item_if_no_quantity;
-
-DELIMITER $$
-CREATE TRIGGER delete_cart_item_if_no_quantity
-AFTER UPDATE ON cart_items
+-- File: triggers/before_payment_insert.sql
+DELIMITER //
+CREATE TRIGGER before_payment_insert
+BEFORE INSERT ON payment
 FOR EACH ROW
 BEGIN
-    IF NEW.quantity = 0 THEN
-        /* Remove the item from the cart */
-        DELETE FROM cart_items
-        WHERE cart_id = NEW.cart_id AND variant_id = NEW.variant_id;
+    IF NEW.amount <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Payment amount must be greater than zero';
     END IF;
-END $$
-
+END;//
 DELIMITER ;
 
--- File: triggers/update_cart.sql
-SET FOREIGN_KEY_CHECKS = 0;
-
-DELIMITER $$
-
-CREATE TRIGGER update_cart_after_insert_update
-AFTER INSERT ON cart_items
+-- File: triggers/trg_variant_price_check.sql
+DELIMITER //
+CREATE TRIGGER trg_variant_price_check
+BEFORE INSERT ON variant
 FOR EACH ROW
 BEGIN
-    CALL update_cart_total_price(NEW.cart_id);
-END $$
-
-CREATE TRIGGER update_cart_after_update
-AFTER UPDATE ON cart_items
-FOR EACH ROW
-BEGIN
-    CALL update_cart_total_price(NEW.cart_id);
-END $$
-
-CREATE TRIGGER update_cart_after_delete
-AFTER DELETE ON cart_items
-FOR EACH ROW
-BEGIN
-    CALL update_cart_total_price(OLD.cart_id);
-END $$
-
+    IF NEW.price < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Price cannot be negative';
+    END IF;
+END //
 DELIMITER ;
 
-SET FOREIGN_KEY_CHECKS = 1;
 
--- INSERT INTO cart_items (cart_id, variant_id, quantity) VALUES
--- (1, 4, 1),
--- (1, 3, 2);
+-- File: triggers/trg_variant_stock_update.sql
+DELIMITER //
 
--- SHOW TRIGGERS WHERE `Table` = 'cart_items';
 
+CREATE TRIGGER trg_variant_stock_update
+AFTER UPDATE ON variant_warehouse
+FOR EACH ROW
+BEGIN
+    -- You could add logging or additional business logic here
+    -- For example, you might want to track stock changes or send notifications
+    IF NEW.stock_count <= 0 THEN
+        INSERT INTO stock_alerts (variant_id, warehouse_id, alert_type)
+        VALUES (NEW.variant_id, NEW.warehouse_id, 'OUT_OF_STOCK');
+    END IF;
+END //
+DELIMITER ;
 
 -- File: triggers/update_inventory.sql
 DELIMITER //
@@ -1092,9 +1239,15 @@ DELIMITER ;
 -- /items
 CREATE VIEW cart_with_email AS
 SELECT C.*,CU.customer_email FROM cart C
-join customer CU on C.customer_id=CU.customer_id
-WHERE CU.customer_email = 'john.doe@example.com';
+JOIN customer CU on C.customer_id=CU.customer_id;
 
+
+-- File: views/cart_with_email.sql
+DROP VIEW IF EXISTS cart_with_email;
+
+CREATE VIEW cart_with_email AS
+SELECT C.*,CU.customer_email FROM cart C
+JOIN customer CU on C.customer_id=CU.customer_id;
 
 -- File: views/categories.sql
 -- /categories/:name/products
@@ -1121,26 +1274,45 @@ DROP VIEW categories_with_name_and_id;
 
 
 -- File: views/featured product.sql
-CREATE VIEW variant_details AS
-SELECT V.*,D.discount,P.product_name,P.description,C.category_name FROM variant V
-join product P on V.product_id=P.product_id
-join product_category PC on P.product_id=PC.product_id
-join category C on PC.category_id=C.category_id
-join discounts D on V.discount_id=D.discount_id
-  LIMIT 1 OFFSET 2;
-
-
-CREATE VIEW variant_count AS
-SELECT COUNT(*) AS total FROM variant;
-
 
 CREATE VIEW variant_details_with_variant_id AS
 SELECT V.*,D.discount,P.product_name,P.description,C.category_name FROM variant V
 join product P on V.product_id=P.product_id
 join product_category PC on P.product_id=PC.product_id
 join category C on PC.category_id=C.category_id
-join discounts D on V.discount_id=D.discount_id
-WHERE V.variant_id = 2;
+join discounts D on V.discount_id=D.discount_id;
+
+
+CREATE VIEW featured_product AS
+SELECT P.product_name,V.price from product P
+JOIN variant V;
+
+select * from featured_product;
+
+DROP VIEW IF EXISTS featured_product;
+
+
+-- View for product listing with category and variant information
+CREATE VIEW vw_product_details AS
+SELECT
+    p.product_id,
+    p.product_name,
+    p.description,
+    c.category_name,
+    MIN(v.price) as min_price,
+    MAX(v.price) as max_price,
+    SUM(vw.stock_count) as total_stock,
+    COUNT(DISTINCT v.variant_id) as variant_count
+FROM product p
+LEFT JOIN product_category pc ON pc.product_id = p.product_id
+LEFT JOIN category c ON pc.category_id = c.category_id
+LEFT JOIN variant v ON p.product_id = v.product_id
+LEFT JOIN variant_warehouse vw ON v.variant_id = vw.variant_id
+GROUP BY p.product_id, p.product_name, p.description, c.category_name;
+
+-- select * from vw_product_details;
+-- Stored procedure for paginated product listing
+
 
 
 -- ============================================

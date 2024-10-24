@@ -1,6 +1,6 @@
 DELIMITER //
 CREATE TRIGGER trg_variant_price_check
-BEFORE INSERT ON Variant
+BEFORE INSERT ON variant
 FOR EACH ROW
 BEGIN
     IF NEW.price < 0 THEN

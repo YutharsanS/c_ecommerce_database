@@ -2,7 +2,7 @@ DELIMITER //
 
 
 CREATE TRIGGER trg_variant_stock_update
-AFTER UPDATE ON Variant_Warehouse
+AFTER UPDATE ON variant_warehouse
 FOR EACH ROW
 BEGIN
     -- You could add logging or additional business logic here

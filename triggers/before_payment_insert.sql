@@ -1,6 +1,6 @@
 DELIMITER //
 CREATE TRIGGER before_payment_insert
-BEFORE INSERT ON Payment
+BEFORE INSERT ON payment
 FOR EACH ROW
 BEGIN
     IF NEW.amount <= 0 THEN
