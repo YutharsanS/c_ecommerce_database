@@ -17,4 +17,13 @@ join product P on V.product_id=P.product_id
 join product_category PC on P.product_id=PC.product_id
 join category C on PC.category_id=C.category_id
 join discounts D on V.discount_id=D.discount_id
-WHERE V.variant_id = 2;
+WHERE V.variant_id = ?;
+
+
+CREATE VIEW featured_product AS
+SELECT P.product_name,V.price from product P
+JOIN variant V;
+
+select * from featured_product;
+
+DROP VIEW IF EXISTS featured_product;

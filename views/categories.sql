@@ -4,7 +4,7 @@ SELECT V.*,P.product_name,C.category_name FROM variant V
 JOIN product P ON V.product_id=P.product_id 
 JOIN product_category PC ON P.product_id=PC.product_id 
 JOIN category C ON PC.category_id=C.category_id 
-WHERE C.category_name = 'Speakers';
+WHERE C.category_name = ?;
 
 -- /categories/:name/products/:id
 CREATE VIEW categories_with_name_and_id AS
