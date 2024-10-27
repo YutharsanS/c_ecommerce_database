@@ -12,6 +12,10 @@ INSERT INTO attribute (attribute_id, attribute_name) VALUES
 (7, 'Age Group'),
 (8, 'Material');
 
+INSERT INTO attribute (attribute_id, attribute_name) VALUES
+(9,'Screen Size'),
+(10,'Waterproof');
+
 
 
 -- Re-enable foreign key checks

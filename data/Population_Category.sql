@@ -11,14 +11,28 @@ INSERT INTO category (category_id, category_name, parent_category_id) VALUES
 
 -- Subcategories
 INSERT INTO category (category_id, category_name, parent_category_id) VALUES
-(3, 'Mobile Phones', 1),
-(4, 'Speakers', 1),
+(49, 'Mobile Phones', 1),
+(50, 'Speakers', 1),
 (7, 'Laptops', 1),
 (8, 'Tablets', 1),
 (9, 'Smart Watches', 1),
 (10, 'Headphones', 1),
 (11, 'Gaming Consoles', 1),
 (12, 'Digital Cameras', 1);
+
+-- Toys
+INSERT INTO category (category_id, category_name, parent_category_id) 
+VALUES
+    (51, 'Educational Toys', 2),
+    (52, 'Action Figures & Collectibles', 2),
+    (53, 'Dolls & Accessories', 2),
+    (54, 'Building & Construction Toys', 2),
+    (55, 'Electronic & Robotic Toys', 2),
+    (56, 'Vehicles & Playsets', 2),
+    (57, 'Role-Playing Toys', 2),
+    (58, 'Outdoor & Sports Toys', 2),
+    (59, 'Musical & Sensory Toys', 2),
+    (60, 'Board Games & Puzzles', 2),
 
 -- Fashion subcategories
 INSERT INTO category (category_id, category_name, parent_category_id) VALUES

@@ -400,6 +400,76 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (250, 'Mindfulness and Spirituality', 'Guide to mindfulness and inner peace');
 
 
+INSERT INTO product (product_id, product_name, description) 
+VALUES
+    -- Educational Toys
+    (351, 'Math Puzzle Set', 'A set of puzzles to improve math skills.'),
+    (352, 'Science Experiment Kit', 'Kit for basic science experiments.'),
+    (353, 'Alphabet Blocks', 'Blocks to learn letters and numbers.'),
+    (354, 'Coding Robot', 'Interactive robot that teaches coding.'),
+    (355, 'Solar System Model', 'A model of the solar system for kids.'),
 
+    -- Action Figures & Collectibles
+    (306, 'Superhero Figure', 'An action figure of a popular superhero.'),
+    (307, 'Robot Warrior', 'A collectible robot figure.'),
+    (308, 'Fantasy Character Set', 'Figures from a popular fantasy series.'),
+    (309, 'Movie Icon Figure', 'Collectible movie character figure.'),
+    (310, 'Animal Kingdom Set', 'Set of collectible animal figures.'),
+
+    -- Dolls & Accessories
+    (311, 'Baby Doll', 'Soft and cuddly baby doll.'),
+    (312, 'Fashion Doll', 'Doll with changeable fashion outfits.'),
+    (313, 'Dollhouse', 'Fully furnished dollhouse.'),
+    (314, 'Doll Carriage', 'A carriage for dolls to ride in style.'),
+    (315, 'Doll Clothing Set', 'Set of clothing for various dolls.'),
+
+    -- Building & Construction Toys
+    (316, 'Building Blocks', 'Classic set of colorful blocks.'),
+    (317, 'Magnetic Tiles', 'Tiles that stick together to build shapes.'),
+    (318, 'Engineering Kit', 'Kit to build simple machines.'),
+    (319, 'Wooden Construction Set', 'Wooden set for creative building.'),
+    (320, 'Bridge Builder Kit', 'Kit to build bridge models.'),
+
+    -- Electronic & Robotic Toys
+    (321, 'Remote Control Car', 'High-speed RC car.'),
+    (322, 'Dancing Robot', 'Robot that can dance and sing.'),
+    (323, 'Virtual Pet', 'Interactive pet that responds to touch.'),
+    (324, 'Drone with Camera', 'Small drone with a camera for kids.'),
+    (325, 'Interactive Tablet', 'Tablet for learning games and activities.'),
+
+    -- Vehicles & Playsets
+    (326, 'Toy Race Car', 'Race car with pull-back action.'),
+    (327, 'Construction Truck', 'Truck with movable parts.'),
+    (328, 'Police Station Playset', 'Playset with police station theme.'),
+    (329, 'Fire Engine', 'Toy fire engine with lights and sounds.'),
+    (330, 'Train Set', 'Toy train with tracks.'),
+
+    -- Role-Playing Toys
+    (331, 'Doctor Kit', 'Doctor kit with stethoscope and tools.'),
+    (332, 'Kitchen Set', 'Mini kitchen set for pretend play.'),
+    (333, 'Tool Set', 'Kid-friendly tool set for builders.'),
+    (334, 'Cash Register', 'Toy cash register with pretend money.'),
+    (335, 'Firefighter Costume', 'Costume for role-playing firefighter.'),
+
+    -- Outdoor & Sports Toys
+    (336, 'Soccer Ball', 'Kid-sized soccer ball for outdoor play.'),
+    (337, 'Basketball Hoop', 'Portable hoop for basketball.'),
+    (338, 'Water Gun', 'High-pressure water gun.'),
+    (339, 'Kick Scooter', 'Two-wheel scooter for kids.'),
+    (340, 'Bicycle Helmet', 'Helmet for cycling safety.'),
+
+    -- Musical & Sensory Toys
+    (341, 'Toy Guitar', 'Guitar with sound effects.'),
+    (342, 'Drum Set', 'Small drum set for kids.'),
+    (343, 'Xylophone', 'Colorful xylophone with mallets.'),
+    (344, 'Sensory Ball', 'Textured ball for sensory play.'),
+    (345, 'Fidget Cube', 'Cube with fidget-friendly sides.'),
+
+    -- Board Games & Puzzles
+    (346, 'Puzzle Set', 'Set of small jigsaw puzzles.'),
+    (347, 'Board Game', 'Classic family board game.'),
+    (348, 'Memory Game', 'Card game to improve memory.'),
+    (349, 'Checkers Set', 'Checkers board game.'),
+    (350, 'Maze Puzzle', 'Handheld maze puzzle.');
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
