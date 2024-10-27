@@ -372,6 +372,77 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (249, 48),  -- Quick and Easy Recipes
 (250, 48);  -- Baking Basics for Beginners
 
+INSERT INTO product_category (product_id, category_id) 
+VALUES
+    -- Educational Toys (Category ID: 51)
+    (351, 51),
+    (352, 51),
+    (353, 51),
+    (354, 51),
+    (355, 51),
+
+    -- Action Figures & Collectibles (Category ID: 52)
+    (306, 52),
+    (307, 52),
+    (308, 52),
+    (309, 52),
+    (310, 52),
+
+    -- Dolls & Accessories (Category ID: 53)
+    (311, 53),
+    (312, 53),
+    (313, 53),
+    (314, 53),
+    (315, 53),
+
+    -- Building & Construction Toys (Category ID: 54)
+    (316, 54),
+    (317, 54),
+    (318, 54),
+    (319, 54),
+    (320, 54),
+
+    -- Electronic & Robotic Toys (Category ID: 55)
+    (321, 55),
+    (322, 55),
+    (323, 55),
+    (324, 55),
+    (325, 55),
+
+    -- Vehicles & Playsets (Category ID: 56)
+    (326, 56),
+    (327, 56),
+    (328, 56),
+    (329, 56),
+    (330, 56),
+
+    -- Role-Playing Toys (Category ID: 57)
+    (331, 57),
+    (332, 57),
+    (333, 57),
+    (334, 57),
+    (335, 57),
+
+    -- Outdoor & Sports Toys (Category ID: 58)
+    (336, 58),
+    (337, 58),
+    (338, 58),
+    (339, 58),
+    (340, 58),
+
+    -- Musical & Sensory Toys (Category ID: 59)
+    (341, 59),
+    (342, 59),
+    (343, 59),
+    (344, 59),
+    (345, 59),
+
+    -- Board Games & Puzzles (Category ID: 60)
+    (346, 60),
+    (347, 60),
+    (348, 60),
+    (349, 60),
+    (350, 60);
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
