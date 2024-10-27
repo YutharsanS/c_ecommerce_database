@@ -20,19 +20,14 @@ INSERT INTO attribute (attribute_id, attribute_name) VALUES
 (11,'Processor');
 
 
--- Re-enable foreign key checks
-SET FOREIGN_KEY_CHECKS = 1;
-
--- Disable foreign key checks
-SET FOREIGN_KEY_CHECKS = 0;
-
 INSERT INTO attribute (attribute_id, attribute_name) VALUES
-(9,'Screen Size'),
-(10,'Waterproof');
-
-INSERT INTO attribute (attribute_id, attribute_name) VALUES
-(11,'Processor');
-
+(12, 'Resolution'),
+(13, 'Connectivity'),
+(14, 'Gender'),
+(15, 'Power Source'),
+(16, 'Speed'),
+(17, 'Volume'),
+(18, 'Language');
 
 -- Re-enable foreign key checks
 SET FOREIGN_KEY_CHECKS = 1;
