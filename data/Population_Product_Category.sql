@@ -1,3 +1,4 @@
+
 -- Disable foreign key checks
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -245,7 +246,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 
 
 -- Air Purifiers (category_id: 33)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (276, 33),  -- Mi Air Purifier 3C
 (277, 33),  -- Sharp FP-J30M
 (278, 33),  -- Blueair Blue Pure 211+
@@ -253,7 +254,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (280, 33);  -- Coway Sleek Pro AP-1009
 
 -- Food Processors (category_id: 34)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (281, 34),  -- Kenwood Multipro Compact
 (282, 34),  -- Bajaj FX1000
 (283, 34),  -- Inalsa Inox 1000
@@ -261,7 +262,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (285, 34);  -- Wonderchef Nutri-Blend
 
 -- Electric Fans (category_id: 35)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (286, 35),  -- Orient Electric Tornado
 (287, 35),  -- Usha Maxx Air
 (288, 35),  -- Bajaj Esteem Table Fan
@@ -269,7 +270,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (290, 35);  -- Crompton High Flo Wave Plus
 
 -- Chimneys & Cooktops (category_id: 36)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (291, 36),  -- Sunflame 60cm Chimney
 (292, 36),  -- Glen 6062 Auto Clean
 (293, 36),  -- Kutchina Xpedio
@@ -277,7 +278,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (295, 36);  -- Prestige Magic Glass Top
 
 -- Fiction Books (category_id: 37)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (296, 37),  -- The Great Gatsby
 (297, 37),  -- To Kill a Mockingbird
 (298, 37),  -- The Catcher in the Rye
@@ -285,7 +286,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (300, 37);  -- The Hobbit
 
 -- Non-Fiction Books (category_id: 38)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (301, 38),  -- The Immortal Life of Henrietta Lacks
 (302, 38),  -- The Wright Brothers
 (303, 38),  -- Thinking, Fast and Slow
@@ -293,7 +294,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (305, 38);  -- Unbroken
 
 -- Academic & Educational Books (category_id: 39)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (201, 39),  -- Calculus Made Easy
 (202, 39),  -- Physics Fundamentals
 (203, 39),  -- Introduction to Psychology
@@ -301,7 +302,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (205, 39);  -- Advanced Algebra
 
 -- Children's Books (category_id: 40)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (206, 40),  -- The Adventures of Timmy
 (207, 40),  -- Fairy Tales of the World
 (208, 40),  -- Learning ABCs
@@ -309,7 +310,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (210, 40);  -- Dinosaur Facts
 
 -- Comics & Manga (category_id: 41)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (211, 41),  -- Superhero Chronicles
 (212, 41),  -- Samurai Legends
 (213, 41),  -- Alien Invasion
@@ -317,7 +318,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (215, 41);  -- The Masked Vigilante
 
 -- Self-Help Books (category_id: 42)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (216, 42),  -- The Power of Positive Thinking
 (217, 42),  -- Time Management Mastery
 (218, 42),  -- Overcoming Anxiety
@@ -325,7 +326,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (220, 42);  -- Financial Freedom
 
 -- Business & Economics Books (category_id: 43)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (221, 43),  -- Principles of Economics
 (222, 43),  -- Marketing Essentials
 (223, 43),  -- Investment Basics
@@ -333,7 +334,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (225, 43);  -- Startup Success
 
 -- Technology & Science Books (category_id: 44)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (226, 44),  -- Artificial Intelligence 101
 (227, 44),  -- The Quantum World
 (228, 44),  -- Data Science for Beginners
@@ -341,7 +342,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (230, 44);  -- Blockchain Revolution
 
 -- Biography & Memoirs (category_id: 45)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (231, 45),  -- Memoirs of a Scientist
 (232, 45),  -- A Leader's Path
 (233, 45),  -- Entrepreneurial Dreams
@@ -349,7 +350,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (235, 45);  -- My Life in the Wild
 
 -- History Books (category_id: 46)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (236, 46),  -- World War II Chronicles
 (237, 46),  -- Ancient Civilizations
 (238, 46),  -- The Roman Empire
@@ -357,7 +358,7 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (240, 46);  -- The American Revolution
 
 -- Travel Books (category_id: 47)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (241, 47),  -- The Art of Travel
 (242, 47),  -- Lonely Planet: Europe
 (243, 47),  -- National Geographic: World Destinations
@@ -365,14 +366,14 @@ INSERT INTO product_category (product_id, category_id) VALUES
 (245, 47);  -- Backpacking Around the World
 
 -- Cookbooks (category_id: 48)
-INSERT INTO product_category (product_id, category_id) VALUES 
+INSERT INTO product_category (product_id, category_id) VALUES
 (246, 48),  -- Mastering the Art of French Cooking
 (247, 48),  -- The Joy of Cooking
 (248, 48),  -- Vegan Cooking for Everyone
 (249, 48),  -- Quick and Easy Recipes
 (250, 48);  -- Baking Basics for Beginners
 
-INSERT INTO product_category (product_id, category_id) 
+INSERT INTO product_category (product_id, category_id)
 VALUES
     -- Educational Toys (Category ID: 51)
     (351, 51),

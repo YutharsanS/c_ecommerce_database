@@ -49,12 +49,17 @@ fi
 
 # Loop through all .sql files in the directory and append to master SQL
 for sql_file in "${sql_files[@]}"; do
-    # echo "Adding $(basename "$sql_file") to $MASTER_SQL"
-    # echo "source $sql_file;" >> "$MASTER_SQL"
-
     if [ "$(basename "$sql_file")" != "$MASTER_SQL" ]; then
-        echo "Adding $(basename "$sql_file") to $MASTER_SQL"
-        echo "source $sql_file;" >> "$MASTER_SQL"
+        echo "Processing $(basename "$sql_file")..."
+        if sudo mysql --defaults-file="$MYSQL_OPTS" "$DATABASE" < "$sql_file"; then
+            echo "Successfully executed $(basename "$sql_file")"
+        else
+            echo "Error executing $(basename "$sql_file")"
+            # Optionally, you can add:
+            # continue   # to skip to next file
+            # or
+            # exit 1    # to stop processing completely
+        fi
     fi
 done
 

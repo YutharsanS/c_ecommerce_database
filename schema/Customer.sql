@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS customer;
 
 CREATE TABLE customer (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
-    password_hash VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255),
     customer_name VARCHAR(100) NOT NULL,
     customer_email VARCHAR(100) NOT NULL UNIQUE,
     customer_phone_number VARCHAR(20),

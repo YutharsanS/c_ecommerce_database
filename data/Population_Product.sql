@@ -1,3 +1,4 @@
+
 -- Disable foreign key checks
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -8,7 +9,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (3, 'LEGO Star Wars Set', 'Building set for Star Wars enthusiasts');
 
 -- Mobile Phones (category_id: 3)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (4, 'iPhone 15 Pro Max', 'Latest Apple flagship smartphone with A17 chip'),
 (5, 'Samsung Galaxy S24 Ultra', 'Premium Android smartphone with advanced AI features'),
 -- (3, 'Google Pixel 8 Pro', 'Google flagship with advanced camera capabilities'),
@@ -21,7 +22,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (10, 'Vivo X100 Pro', 'Camera-focused flagship with Zeiss optics');
 
 -- Laptops (category_id: 7)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (11, 'MacBook Pro 16', 'Professional laptop with M3 Max chip'),
 (12, 'Dell XPS 15', 'Premium Windows laptop with OLED display'),
 (13, 'Lenovo ThinkPad X1 Carbon', 'Business laptop with excellent keyboard'),
@@ -34,7 +35,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (20, 'Framework Laptop', 'Modular and repairable laptop design');
 
 -- Speakers (category_id: 4)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (51, 'Bose SoundLink Revolve+', 'Portable Bluetooth speaker with 360-degree sound'),
 (52, 'JBL PartyBox 310', 'Powerful speaker with light effects and deep bass'),
 (53, 'Sony SRS-XB43', 'Extra Bass wireless speaker with water resistance'),
@@ -47,7 +48,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (60, 'Bang & Olufsen Beolit 20', 'Premium portable speaker with long battery life');
 
 -- Tablets (category_id: 8)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (61, 'iPad Pro 12.9', 'High-performance tablet with M2 chip'),
 (62, 'Samsung Galaxy Tab S9', 'Android tablet with AMOLED display'),
 (63, 'Microsoft Surface Pro 9', 'Versatile 2-in-1 tablet for work and play'),
@@ -60,7 +61,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (70, 'Nokia T20', 'Simple tablet with long-lasting battery');
 
 -- Smart Watches (category_id: 9)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (71, 'Apple Watch Series 9', 'Smartwatch with fitness and health tracking'),
 (72, 'Samsung Galaxy Watch6', 'Android smartwatch with customizable features'),
 (73, 'Garmin Forerunner 965', 'GPS running watch with advanced metrics'),
@@ -73,7 +74,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (80, 'Polar Grit X Pro', 'Rugged outdoor watch with GPS tracking');
 
 -- Headphones (category_id: 10)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (81, 'Sony WH-1000XM5', 'Noise-canceling over-ear headphones'),
 (82, 'Apple AirPods Max', 'Premium over-ear headphones with spatial audio'),
 (83, 'Bose QuietComfort 45', 'Renowned noise-canceling headphones'),
@@ -86,7 +87,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (90, 'Bowers & Wilkins PX7', 'Luxury headphones with high-fidelity sound');
 
 -- Gaming Consoles (category_id: 11)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (91, 'PlayStation 5', 'Next-gen console with exclusive games'),
 (92, 'Xbox Series X', 'Powerful console with Game Pass integration'),
 (93, 'Nintendo Switch OLED', 'Portable console with vibrant display'),
@@ -99,7 +100,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (100, 'Atari VCS', 'Retro-inspired console with modern features');
 
 -- Digital Cameras (category_id: 12)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (101, 'Canon EOS R5', 'Professional mirrorless camera with 8K video'),
 (102, 'Nikon Z7 II', 'High-resolution mirrorless camera'),
 (103, 'Sony Alpha 7 IV', 'Versatile camera with high image quality'),
@@ -112,7 +113,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (110, 'Ricoh GR IIIx', 'Compact camera with fixed lens and large sensor');
 
 -- Men's Clothing (category_id: 13)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (111, 'Classic White Shirt', 'Formal white cotton shirt'),
 (112, 'Slim Fit Jeans', 'Denim jeans with a modern slim fit'),
 (113, 'Bomber Jacket', 'Trendy jacket for casual wear'),
@@ -120,7 +121,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (115, 'V-Neck Sweater', 'Classic sweater for layering');
 
 -- Women's Clothing (category_id: 14)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (116, 'Floral Summer Dress', 'Lightweight dress with floral print'),
 (117, 'High-Waist Jeans', 'Stylish high-waisted jeans'),
 (118, 'Blazer Coat', 'Elegant coat for formal occasions'),
@@ -128,7 +129,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (120, 'Midi Skirt', 'Flared skirt with comfortable fit');
 
 -- Kids' Clothing (category_id: 15)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (121, 'Graphic T-Shirt', 'Cotton T-shirt with fun print'),
 (122, 'Kids Denim Shorts', 'Comfortable shorts for playtime'),
 (123, 'Winter Jacket', 'Warm jacket for winter season'),
@@ -136,7 +137,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (125, 'Pajama Set', 'Soft pajamas with cartoon characters');
 
 -- Footwear (category_id: 16)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (126, 'Running Shoes', 'Lightweight shoes for daily exercise'),
 (127, 'Leather Boots', 'Classic boots for casual outings'),
 (128, 'Formal Shoes', 'Elegant shoes for formal occasions'),
@@ -144,7 +145,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (130, 'Sandals', 'Open-toe sandals for summer wear');
 
 -- Accessories (category_id: 17)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (131, 'Leather Belt', 'Classic leather belt with metal buckle'),
 (132, 'Sunglasses', 'Stylish sunglasses with UV protection'),
 (133, 'Baseball Cap', 'Casual cap with adjustable strap'),
@@ -152,7 +153,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (135, 'Watch', 'Stylish analog wristwatch');
 
 -- Jewelry (category_id: 18)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (136, 'Gold Necklace', 'Elegant 18k gold necklace'),
 (137, 'Silver Bracelet', 'Sterling silver bracelet with charm'),
 (138, 'Diamond Ring', 'Beautiful diamond ring for engagements'),
@@ -160,7 +161,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (140, 'Anklet', 'Fashionable anklet with beads');
 
 -- Bags & Wallets (category_id: 19)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (141, 'Leather Wallet', 'Premium leather wallet with multiple compartments'),
 (142, 'Backpack', 'Durable backpack with large capacity'),
 (143, 'Crossbody Bag', 'Trendy crossbody bag for essentials'),
@@ -168,7 +169,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (145, 'Clutch', 'Stylish clutch for evening occasions');
 
 -- Sportswear (category_id: 20)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (146, 'Track Pants', 'Comfortable track pants for workouts'),
 (147, 'Sports Bra', 'Supportive sports bra for active wear'),
 (148, 'Running Shorts', 'Lightweight shorts for runners'),
@@ -176,7 +177,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (150, 'Yoga Pants', 'Stretchable pants ideal for yoga');
 
 -- Ethnic Wear (category_id: 21)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (151, 'Saree', 'Traditional Indian saree with intricate design'),
 (152, 'Kurta Pajama', 'Comfortable kurta pajama set for men'),
 (153, 'Salwar Kameez', 'Stylish salwar kameez for women'),
@@ -184,7 +185,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (155, 'Dupatta', 'Beautiful dupatta to pair with ethnic wear');
 
 -- Lingerie & Sleepwear (category_id: 22)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (156, 'Silk Nightgown', 'Comfortable nightgown in silk fabric'),
 (157, 'Lace Bra', 'Stylish lace bra with comfort fit'),
 (158, 'Pajama Set', 'Soft cotton pajama set'),
@@ -192,7 +193,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (160, 'Boxers', 'Breathable cotton boxers for men');
 
 -- Winter Wear (category_id: 23)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (161, 'Puffer Jacket', 'Warm jacket with insulated filling'),
 (162, 'Woolen Sweater', 'Classic wool sweater for winter'),
 (163, 'Thermal Leggings', 'Comfortable thermal leggings'),
@@ -200,7 +201,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (165, 'Beanie', 'Stylish beanie for cold weather');
 
 -- Designer Brands (category_id: 24)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (166, 'Gucci Handbag', 'Luxury handbag with signature design'),
 (167, 'Prada Sunglasses', 'High-end sunglasses with iconic style'),
 (168, 'Armani Suit', 'Elegant suit by Armani'),
@@ -208,7 +209,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (170, 'Burberry Trench Coat', 'Classic trench coat by Burberry');
 
 -- Refrigerators (category_id: 25)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (171, 'LG Smart Refrigerator', 'Energy-efficient fridge with smart features'),
 (172, 'Whirlpool Double Door', 'Spacious double door refrigerator'),
 (173, 'Samsung Side-by-Side', 'Premium side-by-side fridge with inverter technology'),
@@ -216,7 +217,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (175, 'Bosch French Door', 'Luxurious French door refrigerator');
 
 -- Washing Machines (category_id: 26)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (176, 'Samsung Front Load', 'High-efficiency front load washing machine'),
 (177, 'LG Top Load', 'Top load washing machine with inverter motor'),
 (178, 'Bosch Fully Automatic', 'Reliable automatic washing machine'),
@@ -224,7 +225,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (180, 'IFB Front Load', 'Premium front load with multiple wash programs');
 
 -- Air Conditioners (category_id: 27)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (181, 'Daikin Split AC', 'Energy-efficient split AC with inverter'),
 (182, 'LG Dual Inverter AC', 'Inverter AC with low power consumption'),
 (183, 'Voltas Window AC', 'Window AC with fast cooling'),
@@ -232,7 +233,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (185, 'Carrier Tower AC', 'Tower AC with sleek design');
 
 -- Microwave Ovens (category_id: 28)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (186, 'Samsung Convection Microwave', 'Convection microwave with grill function'),
 (187, 'LG Solo Microwave', 'Simple and efficient solo microwave'),
 (188, 'Panasonic Inverter Microwave', 'Inverter microwave with quick heating'),
@@ -240,7 +241,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (190, 'Bajaj OTG Oven', 'Oven toaster griller for baking');
 
 -- Dishwashers (category_id: 29)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (256, 'Bosch Serie 2', 'Reliable dishwasher with eco mode'),
 (257, 'Siemens IQ300', 'Energy-efficient with multiple washing programs'),
 (258, 'Voltas Beko DF15A', 'Compact dishwasher for small kitchens'),
@@ -248,7 +249,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (260, 'Elica WQP12-7605V', 'Affordable dishwasher with multiple cycles');
 
 -- Water Heaters (category_id: 30)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (261, 'Crompton Arno Neo', 'Water heater with powerful heating element'),
 (262, 'Venus Magma Plus', 'Durable design with corrosion-resistant tank'),
 (263, 'Bajaj New Shakti', 'Compact and safe water heater'),
@@ -256,7 +257,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (265, 'Usha Misty Digital', 'Water heater with digital temperature display');
 
 -- Vacuum Cleaners (category_id: 31)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (266, 'Philips PowerPro FC9352/01', 'Bagless vacuum with powerful suction'),
 (267, 'Dyson V8 Absolute', 'Cordless stick vacuum with HEPA filter'),
 (268, 'Karcher WD 3', 'Multi-purpose vacuum with robust design'),
@@ -264,7 +265,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (270, 'Inalsa Spruce', 'Affordable vacuum with high efficiency');
 
 -- Kitchen Appliances (category_id: 32)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (271, 'Preethi Zodiac Mixer Grinder', 'Multifunctional mixer with multiple jars'),
 (272, 'Morphy Richards Icon DLX', 'Mixer grinder with powerful motor'),
 (273, 'Philips Viva Collection Juicer', 'Juicer with quick-clean technology'),
@@ -272,7 +273,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (275, 'Usha FP 3811 Food Processor', 'High-capacity food processor for various tasks');
 
 -- Air Purifiers (category_id: 33)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (276, 'Mi Air Purifier 3C', 'HEPA filter with high clean air delivery rate'),
 (277, 'Sharp FP-J30M', 'Compact air purifier with plasmacluster technology'),
 (278, 'Blueair Blue Pure 211+', 'Powerful air purifier with carbon filter'),
@@ -280,7 +281,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (280, 'Coway Sleek Pro AP-1009', 'Powerful air purifier with high efficiency');
 
 -- Food Processors (category_id: 34)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (281, 'Kenwood Multipro Compact', 'Compact food processor with multiple tools'),
 (282, 'Bajaj FX1000', 'Food processor with 3-speed control'),
 (283, 'Inalsa Inox 1000', 'Multipurpose processor with various attachments'),
@@ -288,7 +289,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (285, 'Wonderchef Nutri-Blend', 'Blender-grinder combo for quick blending');
 
 -- Electric Fans (category_id: 35)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (286, 'Orient Electric Tornado', 'High speed fan with strong air delivery'),
 (287, 'Usha Maxx Air', 'Pedestal fan with adjustable height'),
 (288, 'Bajaj Esteem Table Fan', 'Compact table fan with oscillation feature'),
@@ -296,7 +297,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (290, 'Crompton High Flo Wave Plus', 'Ceiling fan with aerodynamic design');
 
 -- Chimneys & Cooktops (category_id: 36)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (291, 'Sunflame 60cm Chimney', 'Powerful chimney with high suction capacity'),
 (292, 'Glen 6062 Auto Clean', 'Auto clean chimney with touch control'),
 (293, 'Kutchina Xpedio', 'Chimney with filterless technology'),
@@ -304,7 +305,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (295, 'Prestige Magic Glass Top', 'Two-burner gas stove with toughened glass');
 
 -- Fiction Books (category_id: 37)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (296, 'The Great Gatsby', 'Classic novel by F. Scott Fitzgerald'),
 (297, 'To Kill a Mockingbird', 'Pulitzer Prize-winning novel by Harper Lee'),
 (298, 'The Catcher in the Rye', 'Novel about teenage rebellion by J.D. Salinger'),
@@ -312,7 +313,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (300, 'The Hobbit', 'Fantasy adventure by J.R.R. Tolkien');
 
 -- Non-Fiction Books (category_id: 38)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (301, 'The Immortal Life of Henrietta Lacks', 'Story of a woman’s immortal cells'),
 (302, 'The Wright Brothers', 'Biography of the Wright brothers by David McCullough'),
 (303, 'Thinking, Fast and Slow', 'Psychology book on decision making'),
@@ -320,7 +321,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (305, 'Unbroken', 'WWII survival story by Laura Hillenbrand');
 
 -- Academic & Educational Books (category_id: 39)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (201, 'Calculus Made Easy', 'An introductory guide to calculus concepts'),
 (202, 'Physics Fundamentals', 'Comprehensive textbook on physics principles'),
 (203, 'Introduction to Psychology', 'Textbook covering basic psychology topics'),
@@ -328,7 +329,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (205, 'Advanced Algebra', 'A guide to complex algebraic concepts and techniques');
 
 -- Children's Books (category_id: 40)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (206, 'The Adventures of Timmy', 'Storybook for young readers'),
 (207, 'Fairy Tales of the World', 'A collection of fairy tales from different cultures'),
 (208, 'Learning ABCs', 'Educational book for early literacy'),
@@ -336,7 +337,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (210, 'Dinosaur Facts', 'Illustrated book with fun dinosaur facts');
 
 -- Comics & Manga (category_id: 41)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (211, 'Superhero Chronicles', 'Comic series about a team of superheroes'),
 (212, 'Samurai Legends', 'Historical manga with samurai adventures'),
 (213, 'Alien Invasion', 'Sci-fi comic about an alien invasion'),
@@ -344,7 +345,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (215, 'The Masked Vigilante', 'A thrilling comic book about a mysterious hero');
 
 -- Self-Help Books (category_id: 42)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (216, 'The Power of Positive Thinking', 'Guide to achieving a positive mindset'),
 (217, 'Time Management Mastery', 'Tips on managing time efficiently'),
 (218, 'Overcoming Anxiety', 'Strategies for managing anxiety effectively'),
@@ -352,7 +353,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (220, 'Financial Freedom', 'Advice on achieving financial independence');
 
 -- Business & Economics Books (category_id: 43)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (221, 'Principles of Economics', 'Basic guide to economics concepts'),
 (222, 'Marketing Essentials', 'Introduction to marketing strategies'),
 (223, 'Investment Basics', 'Guide to starting in the investment world'),
@@ -360,7 +361,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (225, 'Startup Success', 'Advice for launching and growing a startup');
 
 -- Technology & Science Books (category_id: 44)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (226, 'Artificial Intelligence 101', 'Introduction to AI and its applications'),
 (227, 'The Quantum World', 'Understanding the basics of quantum mechanics'),
 (228, 'Data Science for Beginners', 'Guide to getting started in data science'),
@@ -368,7 +369,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (230, 'Blockchain Revolution', 'Exploring the potential of blockchain technology');
 
 -- Biography & Memoirs (category_id: 45)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (231, 'Memoirs of a Scientist', 'Life journey of a renowned scientist'),
 (232, 'A Leader''s Path', 'The story of an influential political leader'),
 (233, 'Entrepreneurial Dreams', 'The life of a successful entrepreneur'),
@@ -376,7 +377,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (235, 'My Life in the Wild', 'The life story of a conservationist');
 
 -- History Books (category_id: 46)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (236, 'World War II Chronicles', 'Detailed account of WWII events'),
 (237, 'Ancient Civilizations', 'Exploring the history of ancient civilizations'),
 (238, 'The Roman Empire', 'The rise and fall of the Roman Empire'),
@@ -384,7 +385,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (240, 'The American Revolution', 'Insight into the American Revolutionary War');
 
 -- Literature & Poetry (category_id: 47)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (241, 'Collected Works of Shakespeare', 'Complete collection of Shakespeare''s works'),
 (242, 'Romantic Poems', 'Anthology of romantic poetry from various authors'),
 (243, 'Modern Short Stories', 'Collection of contemporary short stories'),
@@ -392,7 +393,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (245, 'Epic Poems of Ancient Times', 'Collection of famous epic poems');
 
 -- Religious & Spiritual Books (category_id: 48)
-INSERT INTO product (product_id, product_name, description) VALUES 
+INSERT INTO product (product_id, product_name, description) VALUES
 (246, 'The Bhagavad Gita', 'Sacred Hindu scripture with philosophical insights'),
 (247, 'The Holy Bible', 'The Christian Bible with Old and New Testaments'),
 (248, 'Teachings of the Buddha', 'Overview of Buddhist principles and teachings'),
@@ -400,7 +401,7 @@ INSERT INTO product (product_id, product_name, description) VALUES
 (250, 'Mindfulness and Spirituality', 'Guide to mindfulness and inner peace');
 
 
-INSERT INTO product (product_id, product_name, description) 
+INSERT INTO product (product_id, product_name, description)
 VALUES
     -- Educational Toys
     (351, 'Math Puzzle Set', 'A set of puzzles to improve math skills.'),

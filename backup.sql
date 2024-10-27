@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: c_ecommerce
 -- ------------------------------------------------------
--- Server version	8.0.39-0ubuntu0.22.04.1
+-- Server version	8.0.39-0ubuntu0.24.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -84,7 +84,7 @@ CREATE TABLE `cart` (
   PRIMARY KEY (`cart_id`),
   KEY `Index_Customer_Id` (`customer_id`),
   CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (1,1,'2024-10-16 11:37:06',1399.97),(3,3,'2024-10-16 11:37:06',89.99);
+INSERT INTO `cart` VALUES (1,1,'2024-10-27 12:15:50',NULL),(3,3,'2024-10-27 12:15:50',NULL),(4,4,'2024-10-27 12:17:22',NULL);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,81 +121,31 @@ CREATE TABLE `cart_items` (
 
 LOCK TABLES `cart_items` WRITE;
 /*!40000 ALTER TABLE `cart_items` DISABLE KEYS */;
-INSERT INTO `cart_items` VALUES (1,1,1),(1,5,2),(3,6,1);
+INSERT INTO `cart_items` VALUES (1,1,1),(1,5,2),(3,6,1),(4,1,1);
 /*!40000 ALTER TABLE `cart_items` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `update_cart_after_insert_update` AFTER INSERT ON `cart_items` FOR EACH ROW BEGIN
-    CALL update_cart_total_price(NEW.cart_id);
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `delete_cart_item_if_no_quantity` AFTER UPDATE ON `cart_items` FOR EACH ROW BEGIN
-    IF NEW.quantity = 0 THEN
-        
-        DELETE FROM cart_items
-        WHERE cart_id = NEW.cart_id AND variant_id = NEW.variant_id;
-    END IF;
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `update_cart_after_update` AFTER UPDATE ON `cart_items` FOR EACH ROW BEGIN
-    CALL update_cart_total_price(NEW.cart_id);
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `update_cart_after_delete` AFTER DELETE ON `cart_items` FOR EACH ROW BEGIN
-    CALL update_cart_total_price(OLD.cart_id);
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `cart_product_details`
+--
+
+DROP TABLE IF EXISTS `cart_product_details`;
+/*!50001 DROP VIEW IF EXISTS `cart_product_details`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `cart_product_details` AS SELECT 
+ 1 AS `cart_id`,
+ 1 AS `product_id`,
+ 1 AS `email`,
+ 1 AS `color`,
+ 1 AS `quantity`,
+ 1 AS `product_name`,
+ 1 AS `new_price`,
+ 1 AS `old_price`,
+ 1 AS `description`,
+ 1 AS `image`,
+ 1 AS `category`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `cart_with_email`
@@ -211,6 +161,36 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `created_at`,
  1 AS `total_price`,
  1 AS `customer_email`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!50001 DROP VIEW IF EXISTS `categories`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `categories` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `categories_with_name_and_id`
+--
+
+DROP TABLE IF EXISTS `categories_with_name_and_id`;
+/*!50001 DROP VIEW IF EXISTS `categories_with_name_and_id`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `categories_with_name_and_id` AS SELECT 
+ 1 AS `product_id`,
+ 1 AS `product_name`,
+ 1 AS `default_variant_id`,
+ 1 AS `category_name`,
+ 1 AS `price`,
+ 1 AS `discount`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -298,7 +278,7 @@ DROP TABLE IF EXISTS `customer`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
   `customer_id` int NOT NULL AUTO_INCREMENT,
-  `password_hash` varchar(255) NOT NULL,
+  `password_hash` varchar(255) DEFAULT NULL,
   `customer_name` varchar(100) NOT NULL,
   `customer_email` varchar(100) NOT NULL,
   `customer_phone_number` varchar(20) DEFAULT NULL,
@@ -308,7 +288,7 @@ CREATE TABLE `customer` (
   UNIQUE KEY `customer_email` (`customer_email`),
   KEY `address_id` (`address_id`),
   CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -317,7 +297,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'hashed_password_1','John Doe','john.doe@example.com','555-1234',1,0),(2,'hashed_password_2','Jane Smith','jane.smith@example.com','555-5678',2,0),(3,'','Guest User','guest.user@example.com',NULL,NULL,1);
+INSERT INTO `customer` VALUES (1,'hashed_password_1','John Doe','john.doe@example.com','555-1234',1,0),(2,'hashed_password_2','Jane Smith','jane.smith@example.com','555-5678',2,0),(3,NULL,'Guest User','guest.user@example.com',NULL,NULL,1),(4,'$2b$10$BPEzSNb7Csqfcnsa53pC4.6pAEHKe7yEtcQ3tk/r3M63F0jGiSZ/G','yutharsan','yutharsansivabalan@gmail.com','123456',NULL,0);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,7 +405,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,1,'2024-10-16 11:37:07','2024-10-21 11:37:07','Delivery','john.doe@example.com','555-1234'),(2,2,2,2,'2024-10-16 11:37:07','2024-10-23 11:37:07','Delivery','jane.smith@example.com','555-5678'),(3,3,NULL,3,'2024-10-16 11:37:07','2024-10-21 11:37:07','Store Pickup','guest.user@example.com',NULL);
+INSERT INTO `orders` VALUES (1,1,1,1,'2024-10-27 12:15:50','2024-11-01 12:15:50','Delivery','john.doe@example.com','555-1234'),(2,2,2,2,'2024-10-27 12:15:50','2024-11-03 12:15:50','Delivery','jane.smith@example.com','555-5678'),(3,3,NULL,3,'2024-10-27 12:15:50','2024-11-01 12:15:50','Store Pickup','guest.user@example.com',NULL);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -452,6 +432,19 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
+-- Temporary view structure for view `parent_categories`
+--
+
+DROP TABLE IF EXISTS `parent_categories`;
+/*!50001 DROP VIEW IF EXISTS `parent_categories`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `parent_categories` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `payment`
 --
 
@@ -473,9 +466,29 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (1,'Card',1399.97,'2024-10-16 11:37:07'),(2,'Cash on Delivery',1099.99,'2024-10-16 11:37:07'),(3,'Card',89.99,'2024-10-16 11:37:07');
+INSERT INTO `payment` VALUES (1,'Card',1399.97,'2024-10-27 12:15:50'),(2,'Cash on Delivery',1099.99,'2024-10-27 12:15:50'),(3,'Card',89.99,'2024-10-27 12:15:50');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `before_payment_insert` BEFORE INSERT ON `payment` FOR EACH ROW BEGIN
+    IF NEW.amount <= 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Payment amount must be greater than zero';
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `product`
@@ -488,6 +501,7 @@ CREATE TABLE `product` (
   `product_id` int NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
   `description` text,
+  `default_variant_id` int DEFAULT NULL,
   PRIMARY KEY (`product_id`),
   KEY `index_product_product_name` (`product_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -499,7 +513,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'iPhone X','Apple smartphone with advanced features'),(2,'Bose SoundLink Speaker','Portable Bluetooth speaker with high-quality sound'),(3,'LEGO Star Wars Set','Building set for Star Wars enthusiasts');
+INSERT INTO `product` VALUES (1,'iPhone X','Apple smartphone with advanced features',1),(2,'Bose SoundLink Speaker','Portable Bluetooth speaker with high-quality sound',5),(3,'LEGO Star Wars Set','Building set for Star Wars enthusiasts',6);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -527,7 +541,7 @@ CREATE TABLE `product_attribute` (
 
 LOCK TABLES `product_attribute` WRITE;
 /*!40000 ALTER TABLE `product_attribute` DISABLE KEYS */;
-INSERT INTO `product_attribute` VALUES (1,1,'Red'),(1,2,'32GB'),(1,3,'Apple'),(1,4,'iOS'),(1,5,'Up to 14 hours'),(2,1,'Black'),(2,3,'Bose'),(2,5,'8 hours'),(2,6,'5 x 5 x 5 inches'),(3,3,'LEGO'),(3,6,'15 x 10 x 5 inches'),(3,7,'8+'),(3,8,'Plastic');
+INSERT INTO `product_attribute` VALUES (1,3,'Apple'),(1,4,'iOS'),(1,5,'Up to 14 hours'),(2,3,'Bose'),(2,5,'8 hours'),(2,6,'5 x 5 x 5 inches'),(3,3,'LEGO'),(3,6,'15 x 10 x 5 inches'),(3,7,'8+'),(3,8,'Plastic');
 /*!40000 ALTER TABLE `product_attribute` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -600,6 +614,26 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `trg_variant_price_check` BEFORE INSERT ON `variant` FOR EACH ROW BEGIN
+    IF NEW.price < 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Price cannot be negative';
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `apply_discount` AFTER UPDATE ON `variant` FOR EACH ROW BEGIN
     IF NEW.discount_id IS NOT NULL AND NEW.discount_id != OLD.discount_id THEN
         UPDATE variant
@@ -661,39 +695,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-
---
--- Temporary view structure for view `variant_count`
---
-
-DROP TABLE IF EXISTS `variant_count`;
-/*!50001 DROP VIEW IF EXISTS `variant_count`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `variant_count` AS SELECT 
- 1 AS `total`*/;
-SET character_set_client = @saved_cs_client;
-
---
--- Temporary view structure for view `variant_details`
---
-
-DROP TABLE IF EXISTS `variant_details`;
-/*!50001 DROP VIEW IF EXISTS `variant_details`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `variant_details` AS SELECT 
- 1 AS `variant_id`,
- 1 AS `product_id`,
- 1 AS `sku`,
- 1 AS `price`,
- 1 AS `weight`,
- 1 AS `discount_id`,
- 1 AS `discount`,
- 1 AS `product_name`,
- 1 AS `description`,
- 1 AS `category_name`*/;
-SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `variant_details_with_variant_id`
@@ -759,9 +760,49 @@ CREATE TABLE `variant_warehouse` (
 
 LOCK TABLES `variant_warehouse` WRITE;
 /*!40000 ALTER TABLE `variant_warehouse` DISABLE KEYS */;
-INSERT INTO `variant_warehouse` VALUES (1,1,49),(2,1,30),(3,1,19),(4,1,10),(5,1,98),(6,2,74);
+INSERT INTO `variant_warehouse` VALUES (1,1,50),(2,1,30),(3,1,20),(4,1,10),(5,1,100),(6,2,75);
 /*!40000 ALTER TABLE `variant_warehouse` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`yutharsan`@`localhost`*/ /*!50003 TRIGGER `trg_variant_stock_update` AFTER UPDATE ON `variant_warehouse` FOR EACH ROW BEGIN
+    
+    
+    IF NEW.stock_count <= 0 THEN
+        INSERT INTO stock_alerts (variant_id, warehouse_id, alert_type)
+        VALUES (NEW.variant_id, NEW.warehouse_id, 'OUT_OF_STOCK');
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `vw_product_details`
+--
+
+DROP TABLE IF EXISTS `vw_product_details`;
+/*!50001 DROP VIEW IF EXISTS `vw_product_details`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `vw_product_details` AS SELECT 
+ 1 AS `id`,
+ 1 AS `name`,
+ 1 AS `description`,
+ 1 AS `category`,
+ 1 AS `old_price`,
+ 1 AS `new_price`,
+ 1 AS `available`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `warehouse`
@@ -789,6 +830,24 @@ INSERT INTO `warehouse` VALUES (1,'Main Warehouse','Dallas'),(2,'Secondary Wareh
 UNLOCK TABLES;
 
 --
+-- Final view structure for view `cart_product_details`
+--
+
+/*!50001 DROP VIEW IF EXISTS `cart_product_details`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `cart_product_details` AS select `ci`.`cart_id` AS `cart_id`,`p`.`product_id` AS `product_id`,`c`.`customer_email` AS `email`,(select `va`.`attribute_value` from (`variant_attribute` `va` join `attribute` `a` on((`va`.`attribute_id` = `a`.`attribute_id`))) where ((`va`.`variant_id` = `ci`.`variant_id`) and (`a`.`attribute_name` = 'color'))) AS `color`,`ci`.`quantity` AS `quantity`,`p`.`product_name` AS `product_name`,(case when (`d`.`discount` is not null) then (`v`.`price` * (1 - (`d`.`discount` / 100))) else `v`.`price` end) AS `new_price`,`v`.`price` AS `old_price`,`p`.`description` AS `description`,(select `va`.`attribute_value` from (`variant_attribute` `va` join `attribute` `a` on((`va`.`attribute_id` = `a`.`attribute_id`))) where ((`va`.`variant_id` = `ci`.`variant_id`) and (`a`.`attribute_name` = 'image'))) AS `image`,(select `c`.`category_name` from (`category` `c` join `product_category` `pc` on((`c`.`category_id` = `pc`.`category_id`))) where (`pc`.`product_id` = `p`.`product_id`) limit 1) AS `category` from (((((`cart_items` `ci` join `variant` `v` on((`ci`.`variant_id` = `v`.`variant_id`))) join `product` `p` on((`v`.`product_id` = `p`.`product_id`))) join `cart` `ca` on((`ci`.`cart_id` = `ca`.`cart_id`))) join `customer` `c` on((`ca`.`customer_id` = `c`.`customer_id`))) left join `discounts` `d` on((`v`.`discount_id` = `d`.`discount_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `cart_with_email`
 --
 
@@ -801,16 +860,16 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `cart_with_email` AS select `C`.`cart_id` AS `cart_id`,`C`.`customer_id` AS `customer_id`,`C`.`created_at` AS `created_at`,`C`.`total_price` AS `total_price`,`CU`.`customer_email` AS `customer_email` from (`cart` `C` join `customer` `CU` on((`C`.`customer_id` = `CU`.`customer_id`))) where (`CU`.`customer_email` = 'john.doe@example.com') */;
+/*!50001 VIEW `cart_with_email` AS select `C`.`cart_id` AS `cart_id`,`C`.`customer_id` AS `customer_id`,`C`.`created_at` AS `created_at`,`C`.`total_price` AS `total_price`,`CU`.`customer_email` AS `customer_email` from (`cart` `C` join `customer` `CU` on((`C`.`customer_id` = `CU`.`customer_id`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `variant_count`
+-- Final view structure for view `categories`
 --
 
-/*!50001 DROP VIEW IF EXISTS `variant_count`*/;
+/*!50001 DROP VIEW IF EXISTS `categories`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -819,16 +878,16 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `variant_count` AS select count(0) AS `total` from `variant` */;
+/*!50001 VIEW `categories` AS select `category`.`category_id` AS `id`,`category`.`category_name` AS `name` from `category` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `variant_details`
+-- Final view structure for view `categories_with_name_and_id`
 --
 
-/*!50001 DROP VIEW IF EXISTS `variant_details`*/;
+/*!50001 DROP VIEW IF EXISTS `categories_with_name_and_id`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -837,7 +896,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `variant_details` AS select `V`.`variant_id` AS `variant_id`,`V`.`product_id` AS `product_id`,`V`.`sku` AS `sku`,`V`.`price` AS `price`,`V`.`weight` AS `weight`,`V`.`discount_id` AS `discount_id`,`D`.`discount` AS `discount`,`P`.`product_name` AS `product_name`,`P`.`description` AS `description`,`C`.`category_name` AS `category_name` from ((((`variant` `V` join `product` `P` on((`V`.`product_id` = `P`.`product_id`))) join `product_category` `PC` on((`P`.`product_id` = `PC`.`product_id`))) join `category` `C` on((`PC`.`category_id` = `C`.`category_id`))) join `discounts` `D` on((`V`.`discount_id` = `D`.`discount_id`))) limit 2,1 */;
+/*!50001 VIEW `categories_with_name_and_id` AS select `P`.`product_id` AS `product_id`,`P`.`product_name` AS `product_name`,`P`.`default_variant_id` AS `default_variant_id`,`C`.`category_name` AS `category_name`,`V`.`price` AS `price`,`D`.`discount` AS `discount` from ((((`product` `P` join `product_category` `PC` on((`P`.`product_id` = `PC`.`product_id`))) join `category` `C` on((`PC`.`category_id` = `C`.`category_id`))) left join `variant` `V` on((`V`.`variant_id` = `P`.`default_variant_id`))) left join `discounts` `D` on((`V`.`discount_id` = `D`.`discount_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `parent_categories`
+--
+
+/*!50001 DROP VIEW IF EXISTS `parent_categories`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `parent_categories` AS select `category`.`category_id` AS `id`,`category`.`category_name` AS `name` from `category` where (`category`.`parent_category_id` is null) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -855,7 +932,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `variant_details_with_variant_id` AS select `V`.`variant_id` AS `variant_id`,`V`.`product_id` AS `product_id`,`V`.`sku` AS `sku`,`V`.`price` AS `price`,`V`.`weight` AS `weight`,`V`.`discount_id` AS `discount_id`,`D`.`discount` AS `discount`,`P`.`product_name` AS `product_name`,`P`.`description` AS `description`,`C`.`category_name` AS `category_name` from ((((`variant` `V` join `product` `P` on((`V`.`product_id` = `P`.`product_id`))) join `product_category` `PC` on((`P`.`product_id` = `PC`.`product_id`))) join `category` `C` on((`PC`.`category_id` = `C`.`category_id`))) join `discounts` `D` on((`V`.`discount_id` = `D`.`discount_id`))) where (`V`.`variant_id` = 2) */;
+/*!50001 VIEW `variant_details_with_variant_id` AS select `V`.`variant_id` AS `variant_id`,`V`.`product_id` AS `product_id`,`V`.`sku` AS `sku`,`V`.`price` AS `price`,`V`.`weight` AS `weight`,`V`.`discount_id` AS `discount_id`,`D`.`discount` AS `discount`,`P`.`product_name` AS `product_name`,`P`.`description` AS `description`,`C`.`category_name` AS `category_name` from ((((`variant` `V` join `product` `P` on((`V`.`product_id` = `P`.`product_id`))) join `product_category` `PC` on((`P`.`product_id` = `PC`.`product_id`))) join `category` `C` on((`PC`.`category_id` = `C`.`category_id`))) join `discounts` `D` on((`V`.`discount_id` = `D`.`discount_id`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -873,7 +950,25 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `variant_search` AS select `V`.`variant_id` AS `variant_id`,`V`.`product_id` AS `product_id`,`V`.`sku` AS `sku`,`V`.`price` AS `price`,`V`.`weight` AS `weight`,`V`.`discount_id` AS `discount_id`,`P`.`product_name` AS `product_name`,`C`.`category_name` AS `category_name` from (((`variant` `V` join `product` `P` on((`V`.`product_id` = `P`.`product_id`))) join `product_category` `PC` on((`P`.`product_id` = `PC`.`product_id`))) join `category` `C` on((`PC`.`category_id` = `C`.`category_id`))) where (`C`.`category_name` = 'Speakers') */;
+/*!50001 VIEW `variant_search` AS select `V`.`variant_id` AS `variant_id`,`V`.`product_id` AS `product_id`,`V`.`sku` AS `sku`,`V`.`price` AS `price`,`V`.`weight` AS `weight`,`V`.`discount_id` AS `discount_id`,`P`.`product_name` AS `product_name`,`C`.`category_name` AS `category_name` from (((`variant` `V` join `product` `P` on((`V`.`product_id` = `P`.`product_id`))) join `product_category` `PC` on((`P`.`product_id` = `PC`.`product_id`))) join `category` `C` on((`PC`.`category_id` = `C`.`category_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_product_details`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vw_product_details`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`yutharsan`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_product_details` AS select `p`.`product_id` AS `id`,`p`.`product_name` AS `name`,`p`.`description` AS `description`,`c`.`category_name` AS `category`,max(`v`.`price`) AS `old_price`,round((`v`.`price` * (1 - (coalesce(`d`.`discount`,0) / 100))),2) AS `new_price`,sum(`vw`.`stock_count`) AS `available` from (((((`product` `p` left join `product_category` `pc` on((`pc`.`product_id` = `p`.`product_id`))) left join `category` `c` on((`pc`.`category_id` = `c`.`category_id`))) left join `variant` `v` on((`p`.`default_variant_id` = `v`.`variant_id`))) left join `variant_warehouse` `vw` on((`v`.`variant_id` = `vw`.`variant_id`))) left join `discounts` `d` on((`d`.`discount_id` = `v`.`discount_id`))) group by `p`.`product_id`,`p`.`product_name`,`p`.`description`,`c`.`category_name` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -887,4 +982,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-16 11:39:23
+-- Dump completed on 2024-10-27 12:28:51
