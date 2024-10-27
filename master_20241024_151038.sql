@@ -1260,7 +1260,7 @@ WHERE C.category_name = 'Speakers';
 
 -- /categories/:name/products/:id
 CREATE VIEW categories_with_name_and_id AS
-SELECT P.*, C.category_name FROM product P
+SELECT P.*,  FROM product P
 JOIN product_category PC ON P.product_id=PC.product_id
 JOIN category C ON PC.category_id=C.category_id;
 
