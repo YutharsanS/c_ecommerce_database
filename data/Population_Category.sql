@@ -32,7 +32,7 @@ VALUES
     (57, 'Role-Playing Toys', 2),
     (58, 'Outdoor & Sports Toys', 2),
     (59, 'Musical & Sensory Toys', 2),
-    (60, 'Board Games & Puzzles', 2),
+    (60, 'Board Games & Puzzles', 2);
 
 -- Fashion subcategories
 INSERT INTO category (category_id, category_name, parent_category_id) VALUES
