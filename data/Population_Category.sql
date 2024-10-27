@@ -21,7 +21,7 @@ INSERT INTO category (category_id, category_name, parent_category_id) VALUES
 (12, 'Digital Cameras', 1);
 
 -- Toys
-INSERT INTO category (category_id, category_name, parent_category_id) 
+INSERT INTO category (category_id, category_name, parent_category_id)
 VALUES
     (51, 'Educational Toys', 2),
     (52, 'Action Figures & Collectibles', 2),

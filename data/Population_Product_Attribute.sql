@@ -1,3 +1,4 @@
+
 -- Disable foreign key checks
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -80,7 +81,7 @@ INSERT INTO product_attribute (product_id, attribute_id, attribute_value) VALUES
     (10, 3, 'Vivo'),              -- Brand
     (10, 4, 'Android'),           -- Operating System
     (10, 5, 'Up to 34 hours'),    -- Battery Life
-    (10, 9, '6.8 inches');   
+    (10, 9, '6.8 inches');
 
     --laptops
     INSERT INTO product_attribute (product_id, attribute_id, attribute_value) VALUES

@@ -4,7 +4,7 @@
 MYSQL_USER="yutharsan"
 MYSQL_PASS="0585"
 DATABASE="c_ecommerce"
-DIRECTORIES=("schema" "procedures" "triggers" "views" "dev" "functions" "indexes" "data")
+DIRECTORIES=("schema" "views" "functions" "procedures" "triggers" "dev" "indexes" "data")
 MASTER_FILE="master_$(date +%Y%m%d_%H%M%S).sql"
 
 # Create the header of the master SQL file
